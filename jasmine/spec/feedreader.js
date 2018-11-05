@@ -34,6 +34,7 @@ $(function() {
 
          it("url defined", function(){
             allFeeds.forEach((feed) => {
+    //Loops through all the feed items to check if url is defined and not empty
                 expect(feed.url).toBeDefined();
                 expect(feed.url.length).not.toBe(0);
             });
@@ -46,6 +47,7 @@ $(function() {
          */
         it("name defined", function(){
             allFeeds.forEach((feed) => {
+    //Loops through all the feed items to check if name is defined and not empty
                 expect(feed.name).toBeDefined();
                 expect(feed.name.length).not.toBe(0);
             });
@@ -62,10 +64,12 @@ $(function() {
          */
          var body = document.body;
          var menuLink = $(".menu-icon-link");
+         //defines the document body and looks for the menu icon
 
          it('default menu hidden', function() {
             expect(body.className).toContain('menu-hidden');
          });
+         //checks to make sure the class menu-hidden is added to the body by default
 
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
@@ -78,6 +82,8 @@ $(function() {
             menuLink.click();
             expect(body.className).toContain('menu-hidden');
           });
+        // checks that when you click the menu icon, the menu gets hidden.
+        // when you click again the menu gets hidden
 
     });
 
@@ -94,6 +100,7 @@ $(function() {
 
         beforeEach(function(done) {
           loadFeed(0, done);
+          //makes sure the loadfeed funtion is loaded before it checks for the entry
         });
 
         it("single .entry element in .feed container", function() {
@@ -114,6 +121,9 @@ $(function() {
       beforeEach(function(done) {
         loadFeed(0, done);
         });
+
+      //loads the loadfeed function before checking to make sure 
+      // if there is a change to the feed, the data actually changes 
 
       it("loadfeed content changes", function() {
         var newFeed = document.querySelector(".feed").innerHTML;

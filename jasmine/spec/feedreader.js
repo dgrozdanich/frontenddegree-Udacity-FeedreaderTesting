@@ -98,7 +98,12 @@ $(function() {
         var container = $('.feed'); 
 
         beforeEach(function(done) {
-          loadFeed(0, done);
+          loadFeed(0, function() {
+            console.log('loadfeed is done');
+            var startingFeed = $('.feed');
+
+            loadFeed(1, done);
+        });
           //makes sure the loadfeed funtion is loaded before it checks for the entry
         });
 

@@ -66,7 +66,7 @@ $(function() {
          //defines the document body and looks for the menu icon
 
          it('default menu hidden', function() {
-            expect(body.classList.contains('menu-hidden'));
+            expect(body.classList).toContain('menu-hidden');
          });
          //checks to make sure the class menu-hidden is added to the body by default
 
@@ -77,9 +77,9 @@ $(function() {
           */
           it('menu visibility', function() {
             menuLink.click();
-            expect(body.className).not.toContain('menu-hidden');
+            expect(body.classList).not.toContain('menu-hidden');
             menuLink.click();
-            expect(body.className).toContain('menu-hidden');
+            expect(body.classList).toContain('menu-hidden');
           });
         // checks that when you click the menu icon, the menu gets hidden.
         // when you click again the menu gets hidden
@@ -98,14 +98,10 @@ $(function() {
         var container = $('.feed'); 
 
         beforeEach(function(done) {
-          loadFeed(0, function() {
-            console.log('loadfeed is done');
-            var startingFeed = $('.feed');
-
-            loadFeed(1, done);
+        loadFeed(0, done);
         });
+      
           //makes sure the loadfeed funtion is loaded before it checks for the entry
-        });
 
         it("single .entry element in .feed container", function() {
                  var entries = container.find('.entry');
@@ -119,18 +115,24 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-      var startingFeed = document.querySelector(".feed").innerHTML;
+      var startingFeed;
+
+      
 
 
       beforeEach(function(done) {
-        loadFeed(0, done);
-        });
+          loadFeed(0, function() {
+            console.log('loadfeed is done');
+            var startingFeed = document.querySelector(".feed").innerText;
 
+            loadFeed(1, done);
+        });
+     });
       //loads the loadfeed function before checking to make sure 
       // if there is a change to the feed, the data actually changes 
 
       it("loadfeed content changes", function() {
-        var newFeed = document.querySelector(".feed").innerHTML;
+        var newFeed = document.querySelector(".feed").innerText;
         expect(startingFeed).not.toBe(newFeed);
 
          });

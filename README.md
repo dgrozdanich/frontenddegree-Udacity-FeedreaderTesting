@@ -14,20 +14,20 @@ and
 
 ## The tests :
 
-###A) RSS Feeds Test Suite
+## A) RSS Feeds Test Suite
 Two tests.
 1. Loops through each feed in the allFeeds object and ensures there is a URL defined and that the URL is not empty
 2. Loops through each feed in the allFeeds object and ensures there is a name defined and that the name is not empty
 
-###B) The Menu Test Suite
+## B) The Menu Test Suite
 Two Tests
 1. Ensures that the menu element is hidden by default. 
 2. Ensures that the menu element is shown when clicked and when clicked again goes 
 back to being hidden
 
-###C) Initial Entries Test Suite
+## C) Initial Entries Test Suite
 1. Makes sure that the loadFeed function is called and complets its work.
 Checks that there is at least a single .entry element withint the .feed container.
 
-###D) New Feed Selection Test Suite
+## D) New Feed Selection Test Suite
 1. Ensures when a new feed is loaded by the loadFeed function that the content actually changes. 
